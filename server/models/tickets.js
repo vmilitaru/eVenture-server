@@ -1,4 +1,5 @@
 const { query } = require('../db/index.js')
+const { convertDateFormat } = require('./edit-date')
 
 async function getAllTickets() {
     const result = await query('SELECT * FROM tickets_table ORDER BY id ASC')
@@ -20,7 +21,25 @@ async function getAllTicketsByAttendeeEmail(email) {
         WHERE attendee_email = $1`,
         [email]
     )
-    return result.rows
+    const orderedEvents = result.rows.sort((a, b) => {
+        if (a.date > b.date) {
+            return 0
+        }
+        if (a.time < b.time) {
+            return -1
+        }
+        return 1
+    })
+
+    const i = orderedEvents.findIndex((e) => {
+        const dateString = convertDateFormat(e.date)
+        const d = new Date(`${dateString}T${e.time}Z`)
+        return d > Date.now()
+    })
+
+    const upcomingEvents = orderedEvents.slice(i)
+
+    return upcomingEvents
 }
 
 async function countAllTicketsAtEventId(id) {
