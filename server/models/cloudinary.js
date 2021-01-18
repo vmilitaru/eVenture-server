@@ -8,7 +8,7 @@ async function getCloudinaryUrl(banner) {
 
     // if image already exists (search by image ID), get the URL of that image
 
-    return uploadedResponse.url
+    return uploadedResponse.secure_url
 }
 
 module.exports = {
