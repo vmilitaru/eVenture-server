@@ -23,8 +23,16 @@ function newTicketEmail(attendeeEmail, event) {
     const mailOptions = {
         from: emailAddress,
         to: attendeeEmail,
-        subject: `Your ticket for ${event.title}`,
-        text: `You have booked a ticket for ${event.title} on ${event.date} at ${event.time}`
+        subject: `eVenture ticket for ${event.title}`,
+        text: `Thank you for signing up for ${event.title}! 
+        This event is taking place on ${event.date} at ${event.time}. We look forward to hearing our speakers, ${event.speaker} at the event. 
+        The School of Code, eVenture looks forward to seeing you at the community class!
+        If you have any questions about the event do get in touch. 
+        If you can no longer attend the event log back in to your account where you can cancel your ticket for ${event.title}
+        
+        Thank you for signing up, do remember you can invite friends to the classes to as these classes are here to help you discover, learn, and grow. 
+
+        The eVenture team`
     }
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
