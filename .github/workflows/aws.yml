@@ -24,9 +24,8 @@
 #    and best practices on handling the access key credentials.
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [created]
 
 name: Deploy to Amazon ECS
 
@@ -54,7 +53,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: communiteam-server
+        ECR_REPOSITORY: valentina-server
         IMAGE_TAG: latest
       run: |
         # Build a docker container and
@@ -69,13 +68,13 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: ecs-task-def-1.json
-        container-name: communiteam-server
+        container-name: valentina-server
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: service-ssl-1
-        cluster: cluster-ssl-1
+        service: val-service-2
+        cluster: val-cluster-2
         wait-for-service-stability: true

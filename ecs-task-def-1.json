@@ -1,11 +1,11 @@
 {
-    "family": "sat-16-ec2-task-def",
+    "family": "task-valentina-server",
     "executionRoleArn": "arn:aws:iam::007555096130:role/ecsTaskExecutionRole",
     "networkMode": "bridge",
     "containerDefinitions": [
         {
-            "name": "communiteam-server",
-            "image": "007555096130.dkr.ecr.eu-west-1.amazonaws.com/communiteam-server:latest",
+            "name": "valentina-server",
+            "image": "007555096130.dkr.ecr.eu-west-1.amazonaws.com/valentina-server:latest",
             "environmentFiles": [
                 {
                   "value": "arn:aws:s3:::communiteam-ci-cd/.env",
