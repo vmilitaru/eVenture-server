@@ -90,7 +90,7 @@ Then, open `.env.local` and add the missing environment variables:
 In the project directory, you can run:
 
 ```bash
-
+npm run start
 ```
 ```bash
 
