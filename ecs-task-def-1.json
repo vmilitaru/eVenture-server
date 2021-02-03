@@ -4,7 +4,7 @@
     "networkMode": "bridge",
     "containerDefinitions": [
         {
-            "name": "task-valentina-server",
+            "name": "valentina-server",
             "image": "007555096130.dkr.ecr.eu-west-1.amazonaws.com/valentina-server:latest",
             "environmentFiles": [
                 {
