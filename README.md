@@ -20,7 +20,7 @@ A [School of Code](https://www.schoolofcode.co.uk/) event management and ticketi
 
 ![eVenture-organiser-view-of-a-specific-event](https://user-images.githubusercontent.com/70764326/106626276-7003bb00-656f-11eb-82c1-384ef7443abe.png)
 
- If you want to see the backend code of this application head to this [repository](https://github.com/vmilitaru/eVenture-server.git).
+ If you want to see the frontend code of this application head to this [repository](https://github.com/vmilitaru/eVenture-client.git).
  
 ## Live Project
 
@@ -32,10 +32,10 @@ Here is the [deployed version](https://eventure.vercel.app/).
 - [Express](https://expressjs.com/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Nodemailer](https://nodemailer.com/about/)
-- [Docker]
+- [Docker](https://www.docker.com/)
 - [Auth0](https://auth0.com/)
 - [Cloudinary](http://cloudinary.com/)
-- [AWS]
+- [AWS](https://aws.amazon.com/)
 
 ## Getting Started
 
@@ -69,19 +69,44 @@ npm i
 
 8. Click the link to `Heroku Postgres`, this will open a new tab.
 
-9. Copy the contents of `.env.example` into a new file called `.env.local`
 
-10. Locate your credentials in the settings tab and set the appropriate environment variables in the `.env.local` file at the root of this project.
+
+## Configuring Cloudinary
+
+9. Go to [cloudinary](http://cloudinary.com/) and sign up for a free account.
+10. To configure the cloudinary object you will need to add your cloudinary credentials such as `Cloud name`, `API Key` and `API Secret` displayed in the _Dashboard_ tab as enviroment variables.
+
+11. Make sure that on your cloudinary account you have an _upload-preset_ called `event-setups`.It is basically the place where you want to store the uploaded images. You can always change the _upload-preset_ name into something else but once you do that you need to update as well the cloudinary function that sits in the models folder to matches the new _upload-preset_ name.
+
+12. Go to _Settings>Upload_ and scroll down until you see the _Upload presets_ section and click _Add upload preset_ link.
+
+13. Configure the following settings:
+    - _Upload preset name_ and _Folder_- should be `event-setups`
+
+14. Everything else can stay as default and  click _Save_.
+
+15. Now, under _Upload presets_ section, next to `ml_default` you should be able to see also the `event_setups` upload-presets folder. 
+16. Save the settings.
+
+## Configuring Auth0
+
+17. If you haven't already set up an Auth0 application please head to the frontend [repository](https://github.com/vmilitaru/eVenture-client.git) of this project and in the README document you will find all the steps needed to complete this.
 
 
 ### Set up environment variables
 
-To connect the app with Auth0, you'll need to add the settings from your Auth0 application as environment variables.
+To connect the server with your Heroku databse, Auth0, Cloudinary and Nodemailer you'll need to add the relevant settings from your applications as environment variables.
 
-15. Copy the content of `.env.example` into a new file called `.env.local`.
+18. Copy the content of `.env.example` into a new file called `.env.local`.
 
 Then, open `.env.local` and add the missing environment variables:
 
+- `PGHOST`, `PGUSER`, `PGDATABASE`, `PGPASSWORD` and `PGPORT` - Can be found in the _Heroku Dashboard>Your App>Overview>Heroku Postgres>Settings_ under _View Credentials_
+- `AUTH0_DOMAIN` and `CLIENT_ORIGIN_URL`- Can be found in the Auth0 dashboard under _Applications_ ,select the created Application and go to `settings`
+- `AUTH0_AUDIENCE` - Can be found in the Auth0 dashboard under _APIs_ ,got to `settings` tab and copy the _Identifier_
+- `EMAIL_ADDRESS` - this is needed to send the confirmation email of the event to which a participant has registered - you can use your own email address or create a new one
+- `EMAIL_PASSWORD` - email password
+- `CLOUDINARY_NAME`, `CLOUDINARY_KEY` and `CLOUDINARY_SECRET` - Can be found in the Cloudinary dashboard 
 
 
 
@@ -90,20 +115,14 @@ Then, open `.env.local` and add the missing environment variables:
 In the project directory, you can run:
 
 ```bash
-npm run start
+npm run dev # runs the server
 ```
 ```bash
-npm run start
+npm run create-events-table #creates the events table
 ```
 ```bash
-
+npm run create-tickets-table #creates the tickets table
 ```
-## Deploy 
-
-
-
-### Deploy Your Local Project
-
 
 
 ## Contributors ✨
