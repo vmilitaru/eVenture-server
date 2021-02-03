@@ -93,7 +93,7 @@ In the project directory, you can run:
 npm run start
 ```
 ```bash
-
+npm run start
 ```
 ```bash
 
