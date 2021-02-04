@@ -67,13 +67,14 @@ npm i
 
 7. Select the `Hobby Dev - Free` plan and click `Submit Order Form`.
 
-8. Click the link to `Heroku Postgres`, this will open a new tab.
+8. Click the link to `Heroku Postgres`, this will open a new tab and under the _Settings_ tab you will be able to view your credentials.
 
 
 
 ## Configuring Cloudinary
 
 9. Go to [cloudinary](http://cloudinary.com/) and sign up for a free account.
+
 10. To configure the cloudinary object you will need to add your cloudinary credentials such as `Cloud name`, `API Key` and `API Secret` displayed in the _Dashboard_ tab as enviroment variables.
 
 11. Make sure that on your cloudinary account you have an _upload-preset_ called `event-setups`.It is basically the place where you want to store the uploaded images. You can always change the _upload-preset_ name into something else but once you do that you need to update as well the cloudinary function that sits in the models folder to matches the new _upload-preset_ name.
@@ -97,16 +98,14 @@ npm i
 
 To connect the server with your Heroku databse, Auth0, Cloudinary and Nodemailer you'll need to add the relevant settings from your applications as environment variables.
 
-18. Copy the content of `.env.example` into a new file called `.env.local`.
+18. Copy the content of `.env.example` into a new file called `.env.local` at the root of this project, then add the missing environment variables:
 
-Then, open `.env.local` and add the missing environment variables:
-
-- `PGHOST`, `PGUSER`, `PGDATABASE`, `PGPASSWORD` and `PGPORT` - Can be found in the _Heroku Dashboard>Your App>Overview>Heroku Postgres>Settings_ under _View Credentials_
-- `AUTH0_DOMAIN` and `CLIENT_ORIGIN_URL`- Can be found in the Auth0 dashboard under _Applications_ ,select the created Application and go to `settings`
-- `AUTH0_AUDIENCE` - Can be found in the Auth0 dashboard under _APIs_ ,got to `settings` tab and copy the _Identifier_
-- `EMAIL_ADDRESS` - this is needed to send the confirmation email of the event to which a participant has registered - you can use your own email address or create a new one
-- `EMAIL_PASSWORD` - email password
-- `CLOUDINARY_NAME`, `CLOUDINARY_KEY` and `CLOUDINARY_SECRET` - Can be found in the Cloudinary dashboard 
+    - `PGHOST`, `PGUSER`, `PGDATABASE`, `PGPASSWORD` and `PGPORT` - can be found in the _Heroku Dashboard>Your App>Overview>Heroku Postgres>Settings_ under _View Credentials_
+    - `AUTH0_DOMAIN` and `CLIENT_ORIGIN_URL`- Can be found in the Auth0 dashboard under _Applications_ ,select the created Application and go to `settings`
+    - `AUTH0_AUDIENCE` - can be found in the Auth0 dashboard under _APIs_ ,got to `settings` tab and copy the _Identifier_
+    - `EMAIL_ADDRESS` - this is needed to send the confirmation email of the event to which a participant has registered - you can use your own email address or create a new one
+    - `EMAIL_PASSWORD` - the password of the email that you chose the send the email confirmation of the event 
+    - `CLOUDINARY_NAME`, `CLOUDINARY_KEY` and `CLOUDINARY_SECRET` - can be found in the Cloudinary dashboard 
 
 
 
