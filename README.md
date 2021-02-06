@@ -75,18 +75,20 @@ npm i
 
 9. Go to [cloudinary](http://cloudinary.com/) and sign up for a free account.
 
-10. To configure the cloudinary object you will need to add your cloudinary credentials such as `Cloud name`, `API Key` and `API Secret` displayed in the _Dashboard_ tab as enviroment variables.
+10. To configure the cloudinary object you will need to add your cloudinary credentials such as `Cloud name`, `API Key` and `API Secret` displayed in the _Dashboard_ tab as **environment variables**.
 
-11. Make sure that on your cloudinary account you have an _upload-preset_ called `event-setups`.It is basically the place where you want to store the uploaded images. You can always change the _upload-preset_ name into something else but once you do that you need to update as well the cloudinary function that sits in the models folder to matches the new _upload-preset_ name.
+11. Make sure that on your cloudinary account you have an _upload-preset_ called `event_setups`. It is basically the place where you want to store the uploaded images. You can always change the _upload-preset_ name into something else but once you do that you need to update as well the cloudinary function that sits in the models folder to matches the new _upload-preset_ name.
 
 12. Go to _Settings>Upload_ and scroll down until you see the _Upload presets_ section and click _Add upload preset_ link.
 
 13. Configure the following settings:
-    - _Upload preset name_ and _Folder_- should be `event-setups`
+    - _Upload preset name_ - should be `event_setups`
+    - _Folder_ - you can name the folder as you wish 👉 _the folder will be visible in your Media Library page after you create your first event on the app_  
 
 14. Everything else can stay as default and  click _Save_.
 
-15. Now, under _Upload presets_ section, next to `ml_default` you should be able to see also the `event_setups` upload-presets folder. 
+15. Now, under _Upload presets_ section, next to `ml_default` you should be able to see also the `event_setups` upload-presets folder
+
 16. Save the settings.
 
 ## Configuring Auth0
